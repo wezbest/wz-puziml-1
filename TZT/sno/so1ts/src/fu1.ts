@@ -9,7 +9,7 @@ dotenv.config()
 
 const apiKey = process.env.SAMB1
 const apiUrl = "https://api.sambanova.ai/v1/chat/completions"
-const modelSelect = "DeepSeek-R1-Distill-Llama-70B"
+export const modelSelect = "DeepSeek-R1-Distill-Llama-70B"
 
 interface Message {
   role: "system" | "user"
@@ -132,7 +132,7 @@ export async function comSamb3(): Promise<void> {
     const response = await axios.post<ApiResponse>(
       apiUrl,
       {
-        model: "DeepSeek-R1-Distill-Llama-70B",
+        model: modelSelect,
         messages: [
           { role: "system", content: "You are a helpful assistant" },
           { role: "user", content: query1 },
