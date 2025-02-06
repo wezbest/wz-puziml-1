@@ -34,7 +34,7 @@ bun_start() {
 
     # Commands and variables
     CO1="mkdir -v $name_of_project && cd $name_of_project && bun init -y"
-    CO2="bun add chalk axios dotenv @types/bun -D"
+    CO2="bun add chalk axios dotenv"
     CO3="bun pm ls"
 
     # RUN Above Commands
