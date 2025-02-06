@@ -1,1 +1,6 @@
-console.log("Hello via Bun!");
+// Main enry point 
+import { labeller } from "./src/ut1";
+
+async function main() {
+    labeller();
+}
