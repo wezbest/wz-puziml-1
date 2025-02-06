@@ -4,6 +4,7 @@ import * as dotenv from "dotenv"
 import * as fs from "fs"
 import * as path from "path"
 import ProgressBar from "progress"
+import boxen from "boxen"
 
 dotenv.config()
 
@@ -78,7 +79,7 @@ export async function comSamb2writeToResults(): Promise<void> {
     const response = await axios.post<ApiResponse>(
       apiUrl,
       {
-        model: modelSelect[1],
+        model: selectedModel,
         messages: [
           { role: "system", content: "You are a helpful assistant" },
           { role: "user", content: query1 },
@@ -140,7 +141,7 @@ export async function comSamb3(): Promise<void> {
     const response = await axios.post<ApiResponse>(
       apiUrl,
       {
-        model: modelSelect[1],
+        model: selectedModel,
         messages: [
           { role: "system", content: "You are a helpful assistant" },
           { role: "user", content: query1 },
