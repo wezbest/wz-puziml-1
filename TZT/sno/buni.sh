@@ -34,7 +34,7 @@ bun_start() {
 
     # Commands and variables
     CO1="mkdir -v $name_of_project && cd $name_of_project && bun init -y"
-    CO2="bun add chalk axios dotenv ora cli boxen"
+    CO2="bun add chalk axios dotenv ora cli boxen progress"
     CO3="bun add @types/bun -D"
     CO4="bun pm ls"
 

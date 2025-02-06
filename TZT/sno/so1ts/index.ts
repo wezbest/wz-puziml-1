@@ -1,10 +1,10 @@
 // Main enry point
 import { labeller } from "./src/ut1"
-import { comSamb1 } from "./src/fu1"
+import { comSamb1, comSamb2writeToResults } from "./src/fu1"
 
 async function main() {
-  labeller("First Try")
-  comSamb1()
+  labeller("CAll API and Write to Results.txt")
+  comSamb2writeToResults()
 }
 
 // Execute Function
