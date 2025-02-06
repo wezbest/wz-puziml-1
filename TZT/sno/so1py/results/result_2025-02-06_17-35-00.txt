@@ -1,0 +1,65 @@
+Becoming a good web3 auditor requires a combination of technical skills, knowledge, and experience. Here's a step-by-step guide to help you get started:
+
+**Step 1: Build a strong foundation in web3 technologies**
+
+* Learn the basics of blockchain, smart contracts, and decentralized applications (dApps)
+* Familiarize yourself with popular web3 platforms such as Ethereum, Binance Smart Chain, and Polkadot
+* Understand the concepts of gas, transactions, and smart contract execution
+
+**Step 2: Gain programming skills**
+
+* Learn programming languages such as Solidity (for Ethereum-based smart contracts), Rust (for Solana-based smart contracts), or JavaScript (for front-end development)
+* Practice writing smart contracts and deploying them on testnets or mainnets
+* Familiarize yourself with popular development frameworks such as Truffle, Hardhat, or Web3.js
+
+**Step 3: Study security fundamentals**
+
+* Learn about common web3 security vulnerabilities such as reentrancy, front-running, and denial-of-service (DoS) attacks
+* Understand the concepts of secure coding practices, secure data storage, and access control
+* Familiarize yourself with security frameworks and guidelines such as the OWASP Web3 Security Cheat Sheet
+
+**Step 4: Get hands-on experience with auditing tools**
+
+* Learn to use popular auditing tools such as:
+	+ Static analysis tools: Slither, Oyente, or MythX
+	+ Dynamic analysis tools: Etherscan, BscScan, or Truffle's debug module
+	+ Fuzz testing tools: Truffle's fuzz module or Ethers.js's fuzz testing library
+* Practice auditing simple smart contracts and identifying vulnerabilities
+
+**Step 5: Join online communities and forums**
+
+* Participate in online forums such as Reddit's r/web3, r/ethereum, or Stack Overflow's web3 tag
+* Join online communities such as the Web3 Security Community or the Ethereum Security Community
+* Engage with other auditors, developers, and security experts to learn from their experiences and share your own knowledge
+
+**Step 6: Pursue certifications and training**
+
+* Consider obtaining certifications such as the Certified Web3 Security Auditor (CW3SA) or the Certified Smart Contract Auditor (CSCA)
+* Participate in online training programs or workshops that focus on web3 security and auditing
+* Stay up-to-date with the latest developments and advancements in web3 security and auditing
+
+**Step 7: Build a portfolio and gain practical experience**
+
+* Create a portfolio of your auditing work, including examples of vulnerabilities you've identified and fixed
+* Participate in bug bounty programs or hackathons to gain practical experience and build your reputation
+* Collaborate with other auditors or developers on projects to gain experience working in a team environment
+
+**Step 8: Stay current and continuously learn**
+
+* Stay up-to-date with the latest developments and advancements in web3 security and auditing
+* Continuously learn new skills and techniques to stay ahead of emerging threats and vulnerabilities
+* Participate in online communities and forums to stay informed and share your knowledge with others
+
+By following these steps, you can become a skilled web3 auditor and help ensure the security and integrity of decentralized applications and smart contracts.
+
+Here's a quick rap to summarize the steps:
+
+"Yo, listen up, if you wanna be a web3 auditor pro
+Build a strong foundation, and let your skills grow
+Learn to code, and study security too
+Get hands-on experience, and join online crews
+
+Pursue certifications, and training that's tight
+Build a portfolio, and gain practical sight
+Stay current, and continuously learn
+And you'll be a web3 auditor, with skills that burn"
