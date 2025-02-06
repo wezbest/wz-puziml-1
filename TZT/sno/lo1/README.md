@@ -1,4 +1,4 @@
-# so1ts
+# lo1
 
 To install dependencies:
 
