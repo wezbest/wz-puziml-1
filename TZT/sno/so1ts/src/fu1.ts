@@ -4,7 +4,7 @@ import * as dotenv from "dotenv"
 import * as fs from "fs"
 import * as path from "path"
 import ProgressBar from "progress"
-import boxen from "boxen"
+import { la2 } from "./ut1"
 
 dotenv.config()
 
@@ -20,6 +20,8 @@ const modelSelect = [
 // Selecting the model here for all the functions
 const selectedModel = modelSelect[1]
 
+const query1 = "Explain Nuclear Fusion in rhyming slang"
+
 interface Message {
   role: "system" | "user"
   content: string
@@ -34,9 +36,7 @@ interface ApiResponse {
 // ***************************** */
 
 export async function comSamb1(): Promise<void> {
-  // Message that will be sent to the API
-  const query1 = "Explain Nucler Fusion in rhyming slang"
-
+  la2(`Selected Model: ${selectedModel}`)
   const spinner = ora("Communicating with LLM API").start()
 
   try {
@@ -72,7 +72,6 @@ export async function comSamb1(): Promise<void> {
 // ***************************** */
 
 export async function comSamb2writeToResults(): Promise<void> {
-  const query1 = "Explain Nuclear Fusion in rhyming slang"
   const spinner = ora("Communicating with LLM API").start()
 
   try {
@@ -122,7 +121,6 @@ export async function comSamb2writeToResults(): Promise<void> {
 // ***************************** */
 
 export async function comSamb3(): Promise<void> {
-  const query1 = "Explain Nuclear Fusion in rhyming slang"
   const spinner = ora("Communicating with LLM API").start()
 
   // Start time
