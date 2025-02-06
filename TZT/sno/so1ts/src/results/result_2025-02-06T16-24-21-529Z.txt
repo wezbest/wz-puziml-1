@@ -1,0 +1,105 @@
+Certainly! Below is a Rust program that fetches data from an API and handles various edge cases, such as network errors, invalid JSON responses, and HTTP errors. We'll use the `reqwest` crate for HTTP requests and the `serde` crate for JSON deserialization.
+
+First, add the necessary dependencies to your `Cargo.toml`:
+
+```toml
+[dependencies]
+reqwest = { version = "0.11", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+tokio = { version = "1.0", features = ["full"] }
+```
+
+Now, create the Rust program:
+
+```rust
+use reqwest::Error;
+use serde::Deserialize;
+use std::env;
+
+#[derive(Deserialize, Debug)]
+struct ApiResponse {
+    // Define the structure of the API response here
+    // For example:
+    // pub id: u32,
+    // pub name: String,
+    // pub value: f64,
+}
+
+#[tokio::main]
+async fn main() -> Result<(), Error> {
+    // Fetch the API URL from an environment variable or provide a default
+    let api_url = env::var("API_URL").unwrap_or_else(|_| "https://api.example.com/data".to_string());
+
+    // Create a new HTTP client
+    let client = reqwest::Client::new();
+
+    // Send a GET request to the API
+    let response = client.get(&api_url).send().await;
+
+    match response {
+        Ok(res) => {
+            // Check if the response status is successful
+            if res.status().is_success() {
+                // Parse the response as JSON
+                let data: Result<ApiResponse, Error> = res.json().await;
+
+                match data {
+                    Ok(api_response) => {
+                        // Handle the successful response
+                        println!("API Response: {:?}", api_response);
+                    }
+                    Err(e) => {
+                        // Handle JSON parsing errors
+                        eprintln!("Error parsing JSON response: {}", e);
+                    }
+                }
+            } else {
+                // Handle HTTP errors
+                eprintln!("HTTP error: {}", res.status());
+            }
+        }
+        Err(e) => {
+            // Handle network errors
+            eprintln!("Network error: {}", e);
+        }
+    }
+
+    Ok(())
+}
+```
+
+### Explanation:
+
+1. **Dependencies**:
+   - `reqwest`: For making HTTP requests.
+   - `serde`: For JSON deserialization.
+   - `tokio`: For asynchronous runtime.
+
+2. **API Response Structure**:
+   - Define a struct `ApiResponse` that matches the structure of the JSON response from the API.
+
+3. **Main Function**:
+   - Use `tokio::main` to make the `main` function asynchronous.
+   - Fetch the API URL from an environment variable or provide a default.
+   - Create a new HTTP client using `reqwest::Client::new()`.
+   - Send a GET request to the API.
+   - Handle the response:
+     - Check if the response status is successful.
+     - Parse the response as JSON.
+     - Handle JSON parsing errors.
+     - Handle HTTP errors.
+     - Handle network errors.
+
+### Running the Program
+
+1. Set the `API_URL` environment variable if needed:
+   ```sh
+   export API_URL="https://api.example.com/data"
+   ```
+
+2. Run the program:
+   ```sh
+   cargo run
+   ```
+
+This program will fetch data from the specified API, handle various edge cases, and print the response or error messages accordingly.

@@ -122,6 +122,70 @@ Query: ${query1}`)
 }
 
 //********************************
+// Function 2 -  Enable Streaming
+// ***************************** */
+
+export async function comSamb2writeToResultsStreaming(): Promise<void> {
+  la2(`Selected Model: ${selectedModel}
+    Query: ${query1}`)
+
+  const spinner = ora("Communicating with LLM API").start()
+
+  try {
+    const response = await axios({
+      method: "post",
+      url: apiUrl,
+      data: {
+        model: selectedModel,
+        messages: [
+          { role: "system", content: "You are a helpful assistant" },
+          { role: "user", content: query1 },
+        ],
+        temperature: 0.1,
+        top_p: 0.1,
+      },
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      responseType: "stream", // Enable streaming
+    })
+
+    spinner.succeed("API call succeeded")
+
+    // Handle streaming response
+    let resultContent = ""
+    response.data.on("data", (chunk: Buffer) => {
+      resultContent += chunk.toString()
+    })
+
+    response.data.on("end", () => {
+      console.log(resultContent)
+
+      // Write to file
+      const resultsDir = path.join(__dirname, "results")
+      if (!fs.existsSync(resultsDir)) {
+        fs.mkdirSync(resultsDir)
+      }
+
+      const dateTime = new Date().toISOString().replace(/[:.]/g, "-")
+      const fileName = `result_${dateTime}.txt`
+      const filePath = path.join(resultsDir, fileName)
+
+      fs.writeFileSync(filePath, resultContent)
+      console.log(`Response written to ${filePath}`)
+    })
+
+    response.data.on("error", (error: Error) => {
+      spinner.fail("Error processing stream")
+      console.error("Error processing stream:", error)
+    })
+  } catch (error) {
+    spinner.fail("API call failed")
+    console.error("Error communicating with LLM API:", error)
+  }
+}
+//********************************
 // Function 3 -  Show progress bar and elapsed time // This is not good
 // ***************************** */
 
