@@ -124,13 +124,3 @@ async def co1():
                 border_style="red",
             )
         )
-
-
-async def main():
-    # Call the asynchronous co1 function
-    await co1()
-
-
-if __name__ == "__main__":
-    # Run the main function using asyncio
-    asyncio.run(main())
