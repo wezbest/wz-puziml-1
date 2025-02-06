@@ -1,4 +1,4 @@
-# lol
+# jan
 
 To install dependencies:
 
