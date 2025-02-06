@@ -1,0 +1,44 @@
+Yo, listen up, let me share a tale,
+'Bout findin' web3 bugs, and gettin' on the trail,
+It's a skill that's in demand, and can pay the bills,
+But it takes time, effort, and a whole lot of skills.
+
+First off, you gotta know the basics, don't be slow,
+Learn Solidity, the language of the show,
+Understand how smart contracts work, and the EVM too,
+It's the foundation, don't build a house without a clue.
+
+Next up, get familiar with the tools of the trade,
+Truffle, Remix, and Hardhat, they'll be your aid,
+Learn to use them, and understand their might,
+They'll help you find those bugs, day and night.
+
+Now, dive into the world of web3 security,
+Learn about vulnerabilities, and how to spot 'em with clarity,
+Reentrancy, front-running, and denial of service too,
+These are the bugs you'll be hunting, so know what to do.
+
+Practice, practice, practice, it's the key to success,
+Join bug bounty programs, and put your skills to the test,
+Start with simple contracts, and work your way up the chain,
+You'll get better with time, and your skills will be on the gain.
+
+Learn from others, join communities, and share your finds,
+The web3 security community is growing, and it's all about the grind,
+Participate in hackathons, and show off your skills,
+You'll learn from others, and get those thrills.
+
+Stay up-to-date, the web3 space is moving fast,
+New vulnerabilities are discovered, and new tools are built to last,
+Keep learning, and stay ahead of the curve,
+You'll be the one finding bugs, and getting the swerve.
+
+Lastly, don't get discouraged, it's a tough road ahead,
+Finding web3 bugs takes time, and it's not always a breadwinner, instead,
+It's a skill that takes patience, persistence, and dedication,
+But the rewards are worth it, and the thrill of the hunt is the motivation.
+
+So, there you have it, a roadmap to success,
+Finding web3 bugs is a skill that's in demand, and it's a yes,
+With practice, patience, and persistence, you'll get there,
+And when you do, you'll be the one with the skills to spare.
