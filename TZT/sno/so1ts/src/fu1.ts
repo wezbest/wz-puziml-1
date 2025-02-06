@@ -11,11 +11,13 @@ const apiKey = process.env.SAMB1
 const apiUrl = "https://api.sambanova.ai/v1/chat/completions"
 
 // Selecting the model here for the functions
-export const modelSelect = [
+const modelSelect = [
   "DeepSeek-R1-Distill-Llama-70B",
   "Meta-Llama-3.1-405B-Instruct",
   "Meta-Llama-3.1-405B-Instruct",
 ]
+// Selecting the model here for all the functions
+const selectedModel = modelSelect[1]
 
 interface Message {
   role: "system" | "user"
@@ -40,7 +42,7 @@ export async function comSamb1(): Promise<void> {
     const response = await axios.post<ApiResponse>(
       apiUrl,
       {
-        model: modelSelect[1],
+        model: selectedModel,
         messages: [
           { role: "system", content: "You are a helpful assistant" },
           { role: "user", content: query1 },
