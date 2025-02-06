@@ -1,0 +1,113 @@
+Here's a simple Rust program that fetches data from a JSON API using the `reqwest` and `serde` crates. This example includes error handling for edge cases.
+
+First, add the following dependencies to your `Cargo.toml`:
+
+```toml
+[dependencies]
+reqwest = "0.11.10"
+serde = { version = "1.0.130", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+```
+
+Then, create a new Rust file (e.g., `main.rs`) and add the following code:
+
+```rust
+use reqwest::Error;
+use serde::{Deserialize, Serialize};
+
+// Define a struct to hold the API response
+#[derive(Debug, Serialize, Deserialize)]
+struct ApiResponse {
+    id: i32,
+    name: String,
+}
+
+// Define a function to fetch data from the API
+async fn fetch_data(url: &str) -> Result<ApiResponse, Error> {
+    let response = reqwest::get(url).await?;
+    let data = response.json().await?;
+    Ok(data)
+}
+
+// Define the main function
+#[tokio::main]
+async fn main() {
+    let url = "https://jsonplaceholder.typicode.com/todos/1";
+    match fetch_data(url).await {
+        Ok(data) => println!("Received data: {:?}", data),
+        Err(error) => println!("Error fetching data: {}", error),
+    }
+}
+```
+
+This program fetches data from the JSONPlaceholder API and prints the received data to the console. If an error occurs during the request, it prints the error message instead.
+
+Here are some edge cases that this program accounts for:
+
+1.  **Network errors**: If there's a problem with the network connection, `reqwest::get` will return an error, which is then propagated to the `main` function and printed to the console.
+2.  **Invalid API response**: If the API returns an invalid response (e.g., a non-JSON response), `response.json()` will return an error, which is then propagated to the `main` function and printed to the console.
+3.  **API request timeout**: If the API request takes too long to complete, `reqwest::get` will return an error, which is then propagated to the `main` function and printed to the console.
+4.  **API endpoint not found**: If the API endpoint is not found, `reqwest::get` will return an error with a 404 status code, which is then propagated to the `main` function and printed to the console.
+
+To further improve error handling, you could consider using a custom error type that wraps the `reqwest::Error` type and provides additional context about the error. This would allow you to handle different types of errors in a more explicit and robust way.
+
+Here's an updated version of the program that uses a custom error type:
+
+```rust
+use reqwest::Error as ReqwestError;
+use serde::{Deserialize, Serialize};
+use std::error::Error as StdError;
+use std::fmt;
+
+// Define a custom error type
+#[derive(Debug)]
+enum FetchError {
+    ReqwestError(ReqwestError),
+    InvalidApiResponse,
+}
+
+impl fmt::Display for FetchError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            FetchError::ReqwestError(error) => write!(f, "Reqwest error: {}", error),
+            FetchError::InvalidApiResponse => write!(f, "Invalid API response"),
+        }
+    }
+}
+
+impl StdError for FetchError {}
+
+impl From<ReqwestError> for FetchError {
+    fn from(error: ReqwestError) -> Self {
+        FetchError::ReqwestError(error)
+    }
+}
+
+// Define a struct to hold the API response
+#[derive(Debug, Serialize, Deserialize)]
+struct ApiResponse {
+    id: i32,
+    name: String,
+}
+
+// Define a function to fetch data from the API
+async fn fetch_data(url: &str) -> Result<ApiResponse, FetchError> {
+    let response = reqwest::get(url).await?;
+    let data = response.json().await?;
+    Ok(data)
+}
+
+// Define the main function
+#[tokio::main]
+async fn main() {
+    let url = "https://jsonplaceholder.typicode.com/todos/1";
+    match fetch_data(url).await {
+        Ok(data) => println!("Received data: {:?}", data),
+        Err(error) => println!("Error fetching data: {}", error),
+    }
+}
+```
+
+In this updated version, the `FetchError` enum defines two variants: `ReqwestError` and `InvalidApiResponse`. The `ReqwestError` variant wraps a `reqwest::Error` instance, while the `InvalidApiResponse` variant represents an invalid API response.
+
+The `fetch_data` function now returns a `Result` with a `FetchError` error type, which allows you to handle different types of errors in a more explicit and robust way.

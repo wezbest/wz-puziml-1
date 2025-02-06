@@ -15,12 +15,13 @@ const apiUrl = "https://api.sambanova.ai/v1/chat/completions"
 const modelSelect = [
   "DeepSeek-R1-Distill-Llama-70B",
   "Meta-Llama-3.1-405B-Instruct",
-  "Meta-Llama-3.1-405B-Instruct",
+  "Qwen2.5-72B-Instruct",
 ]
 // Selecting the model here for all the functions
-const selectedModel = modelSelect[1]
+const selectedModel = modelSelect[2]
 
-const query1 = "Explain Nuclear Fusion in rhyming slang"
+const query1 =
+  "Write a rust program to fetch data from an api, and account for edge cases"
 
 interface Message {
   role: "system" | "user"
@@ -36,10 +37,8 @@ interface ApiResponse {
 // ***************************** */
 
 export async function comSamb1(): Promise<void> {
-  la2(`
-Selected Model: ${selectedModel}
-Query: ${query1}
-    `)
+  la2(`Selected Model: ${selectedModel}
+Query: ${query1}`)
   const spinner = ora("Communicating with LLM API").start()
 
   try {
@@ -75,9 +74,9 @@ Query: ${query1}
 // ***************************** */
 
 export async function comSamb2writeToResults(): Promise<void> {
-  la2(`
-Selected Model: ${selectedModel}
+  la2(`Selected Model: ${selectedModel}
 Query: ${query1}`)
+
   const spinner = ora("Communicating with LLM API").start()
 
   try {
