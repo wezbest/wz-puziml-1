@@ -42,10 +42,7 @@ bun_start() {
     echo -e "--- Initiate ${CO1} ---"
     eval "$CO1"
     echo -e "--- Adding PKGS ${CO2} ---"
-    eval "$CO2"
-    eval "$CO3"
-    echo -e "--- List PKGS ${CO2} ---"
-    eval "$CO4"
+    eval "$CO2" &&  eval "$CO3" && eval "$CO4"
     echo -e "${GREEN}***** Installation Completed *****${NC}"
 }
 
