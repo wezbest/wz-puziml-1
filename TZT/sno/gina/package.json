@@ -1,5 +1,5 @@
 {
-  "name": "jan",
+  "name": "gina",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "axios": "^1.7.9",
+    "boxen": "^8.0.1",
     "chalk": "^5.4.1",
-    "dotenv": "^16.4.7"
+    "cli": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "ora": "^8.2.0"
   }
 }
