@@ -32,7 +32,15 @@ bun_start() {
         exit 1
     fi
 
+    # Commands and variables
     CO1="bun init $name_of_project"
     CO2="cd $name_of_project"
     CO3="bun add chalk axios dotenv"
+
+    # RUN Above Commands
+    echo -e "--- Initiate ${CO1} ---"
+    eval "$CO1"
+    echo -e "--- Adding PKGS ${CO2} ---"
+    eval "$CO2"
+    eval "$CO3"
 }
