@@ -36,7 +36,10 @@ interface ApiResponse {
 // ***************************** */
 
 export async function comSamb1(): Promise<void> {
-  la2(`Selected Model: ${selectedModel}`)
+  la2(`
+Selected Model: ${selectedModel}
+Query: ${query1}
+    `)
   const spinner = ora("Communicating with LLM API").start()
 
   try {
@@ -72,6 +75,9 @@ export async function comSamb1(): Promise<void> {
 // ***************************** */
 
 export async function comSamb2writeToResults(): Promise<void> {
+  la2(`
+Selected Model: ${selectedModel}
+Query: ${query1}`)
   const spinner = ora("Communicating with LLM API").start()
 
   try {
