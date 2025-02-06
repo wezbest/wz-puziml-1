@@ -3,7 +3,8 @@ import { labeller } from "./src/ut1"
 import { comSamb1, comSamb2writeToResults, comSamb3 } from "./src/fu1"
 
 async function main() {
-  labeller("CAll API and Write to Results.txt with progres bars")
+  labeller("Call API and write to file")
+  await comSamb2writeToResults()
 }
 
 // Execute Function
