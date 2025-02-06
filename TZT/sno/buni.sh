@@ -36,6 +36,7 @@ bun_start() {
     CO1="bun init $name_of_project"
     CO2="cd $name_of_project"
     CO3="bun add chalk axios dotenv"
+    CO4="bun pm ls"
 
     # RUN Above Commands
     echo -e "--- Initiate ${CO1} ---"
@@ -43,4 +44,10 @@ bun_start() {
     echo -e "--- Adding PKGS ${CO2} ---"
     eval "$CO2"
     eval "$CO3"
+    echo -e "--- List PKGS ${CO2} ---"
+    eval "$CO4"
+    echo -e "${GREEN}***** Installation Completed *****${NC}"
 }
+
+# Execute Command 
+bun_start
