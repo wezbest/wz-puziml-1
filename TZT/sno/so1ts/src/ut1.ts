@@ -16,4 +16,11 @@ export function labeller(text: string) {
       borderStyle: "round",
     })
   )
+  console.log(
+    boxen(boxText2, {
+      padding: 0.5,
+      borderColor: "green",
+      borderStyle: "round",
+    })
+  )
 }

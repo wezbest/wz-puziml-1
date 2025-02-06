@@ -9,7 +9,7 @@ dotenv.config()
 
 const apiKey = process.env.SAMB1
 const apiUrl = "https://api.sambanova.ai/v1/chat/completions"
-export const modelSelect = "DeepSeek-R1-Distill-Llama-70B"
+export const modelSelect = ["DeepSeek-R1-Distill-Llama-70B"]
 
 interface Message {
   role: "system" | "user"
