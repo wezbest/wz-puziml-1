@@ -1,9 +1,9 @@
 # Main Entry Point
-from src.ut import *
+from src.ut import header1
 
 
 def main():
-    prjint("Hello from so1!")
+    header1("Hello World")
 
 
 if __name__ == "__main__":
