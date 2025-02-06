@@ -3,5 +3,7 @@ import chalk from "chalk";
 import boxen from "boxen";
 
 export function labeller(text : string) {
-    console.log(chalk.blueBright(text));
+    console.clear();
+    const boxText1 = chalk.blueBright(text);
+    console.log(boxen(boxText1, {padding: 0.5}));
 }

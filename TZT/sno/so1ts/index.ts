@@ -2,5 +2,8 @@
 import { labeller } from "./src/ut1";
 
 async function main() {
-    labeller();
+    labeller('Fonda');
 }
+
+// Execute Function 
+main();
