@@ -9,10 +9,12 @@ interface UserInput {
 
 // These models are from the OpenRouter API
 const modelOptions = [
-  "google/gemini-2.0-flash-lite-preview-02-05:free",
   "google/gemini-2.0-pro-exp-02-05:free",
+  "google/gemini-2.0-flash-lite-preview-02-05:free",
+  "google/gemini-2.0-flash-thinking-exp:free",
   "deepseek/deepseek-r1-distill-llama-70b:free",
   "deepseek/deepseek-r1:free",
+  "sophosympatheia/rogue-rose-103b-v0.2:free",
 ]
 
 export async function getUserInput(): Promise<UserInput> {
