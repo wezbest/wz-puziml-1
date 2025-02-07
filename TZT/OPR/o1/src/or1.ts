@@ -26,7 +26,7 @@ export async function fetchChatCompletion(model: string, query: string) {
     const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        Authorization: `Bearer ${apiKeyz}`,
         "HTTP-Referer": siteUrl, // Optional
         "X-Title": siteName, // Optional
         "Content-Type": "application/json",
