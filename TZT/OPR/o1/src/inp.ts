@@ -37,7 +37,7 @@ export async function printInput() {
   try {
     const resolvedUserInput = await getUserInput() // Wait for the Promise to resolve
     console.log(resolvedUserInput)
-    console.log(`Selected Model is ${modelOptions[resolvedUserInput.Model]}`)
+    console.log(`Selected Model is ${resolvedUserInput.Model}`)
   } catch (error) {
     console.error("An error occurred:", error)
   }
