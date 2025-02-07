@@ -10,6 +10,7 @@ import { printBanner } from "./src/ban"
 import { printInput } from "./src/inp"
 
 async function main() {
+  console.clear()
   printBanner()
   await printInput()
 }
