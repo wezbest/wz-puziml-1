@@ -23,27 +23,24 @@ export async function fetchChatCompletion(model: string, query: string) {
   const spinner = ora("Fetching chat completion...").start() // Start the spinner
 
   try {
-    const response = await fetch(
-      "https://openrouter.ai/api/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "HTTP-Referer": siteUrl, // Optional
-          "X-Title": siteName, // Optional
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: model, // Use the model parameter
-          messages: [
-            {
-              role: "user",
-              content: query, // Use the query parameter
-            },
-          ],
-        }),
-      }
-    )
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "HTTP-Referer": siteUrl, // Optional
+        "X-Title": siteName, // Optional
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: model, // Use the model parameter
+        messages: [
+          {
+            role: "user",
+            content: query, // Use the query parameter
+          },
+        ],
+      }),
+    })
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`)
@@ -66,7 +63,7 @@ export async function printOutput() {
 
     // Call the fetchChatCompletion function
     const response = await fetchChatCompletion(
-      resolvedUserInput.Model,
+      resolvedUserInput.Model.toString(),
       resolvedUserInput.Query
     )
     console.log("Chat Completion Response:", response)
