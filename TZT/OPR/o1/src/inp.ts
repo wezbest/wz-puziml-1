@@ -11,6 +11,7 @@ const modelOptions = [
   "DeepSeek-R1-Distill-Llama-70B",
   "Meta-Llama-3.1-405B-Instruct",
   "Qwen2.5-72B-Instruct",
+  "Aunti Poops",
 ]
 
 export async function getUserInput(): Promise<UserInput> {
@@ -36,6 +37,7 @@ export async function printInput() {
   try {
     const resolvedUserInput = await getUserInput() // Wait for the Promise to resolve
     console.log(resolvedUserInput)
+    console.log(`Selected Model is ${modelOptions[resolvedUserInput.Model]}`)
   } catch (error) {
     console.error("An error occurred:", error)
   }
