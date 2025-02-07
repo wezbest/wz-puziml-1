@@ -32,7 +32,11 @@ export async function getUserInput(): Promise<UserInput> {
 }
 
 // Printing the user input
-export function printInput() {
-  const resolvedUserInput = getUserInput()
-  console.log(resolvedUserInput)
+export async function printInput() {
+  try {
+    const resolvedUserInput = await getUserInput() // Wait for the Promise to resolve
+    console.log(resolvedUserInput)
+  } catch (error) {
+    console.error("An error occurred:", error)
+  }
 }
