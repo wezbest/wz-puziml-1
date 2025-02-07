@@ -26,12 +26,3 @@ const modelSelect = [
 const selectedModel = modelSelect[2]
 
 // Getting the user input
-
-// Printing it out the top
-export async function printInput() {
-  const answers = await getUserInput()
-  la2(`
-answers.Query: ${answers.Query}
-answers.Model: ${answers.Model}
-    `)
-}

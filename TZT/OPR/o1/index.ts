@@ -6,13 +6,9 @@ import {
   comSamb2writeToResultsStreaming,
   comSamb3,
 } from "./src/fu1"
-import { printInput } from "./src/or1"
 import { printBanner } from "./src/ban"
 
-async function main() {
-  printBanner()
-  printInput()
-}
+async function main() {}
 
 // Execute Function
 main()
