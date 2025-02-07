@@ -21,6 +21,7 @@ export async function getUserInput(): Promise<UserInput> {
       type: "input",
       name: "Query",
       message: "Enter Your Query:",
+      default: "Write Haiku about sweet odors of womans bodies",
     },
     {
       type: "list",
