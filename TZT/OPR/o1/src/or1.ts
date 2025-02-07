@@ -13,7 +13,7 @@ import { getUserInput } from "./inp"
 dotenv.config()
 
 const apiKeyz = process.env.OPR1
-const apiUrl = "https://openrouter.ai/api/v1/chat/completions"
+const apiUrl = "https://openrouter.ai/api/v1"
 
 export async function fetchChatCompletion(model: string, query: string) {
   const apiKey = apiKeyz // Replace with your OpenRouter API key
