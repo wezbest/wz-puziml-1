@@ -15,6 +15,8 @@ export function printBanner() {
       padding: 0.5,
       borderColor: "green",
       borderStyle: "round",
+      title: "ApiTesting",
+      titleAlignment: "center",
     })
   )
 }
