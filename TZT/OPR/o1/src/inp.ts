@@ -7,11 +7,11 @@ interface UserInput {
   Model: number // Model is a number
 }
 
+// These models are from the OpenRouter API
 const modelOptions = [
   "DeepSeek-R1-Distill-Llama-70B",
   "Meta-Llama-3.1-405B-Instruct",
   "Qwen2.5-72B-Instruct",
-  "Aunti Poops",
 ]
 
 export async function getUserInput(): Promise<UserInput> {

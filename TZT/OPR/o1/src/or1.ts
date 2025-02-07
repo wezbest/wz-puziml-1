@@ -10,19 +10,9 @@ import * as path from "path"
 import ProgressBar from "progress"
 import inquirer from "inquirer"
 import { la2 } from "./ut1"
+import { getUserInput } from "./inp"
 
 dotenv.config()
 
 const apiKey = process.env.OPR1
 const apiUrl = "https://openrouter.ai/api/v1/chat/completions"
-
-// Selecting the model here for the functions
-const modelSelect = [
-  "DeepSeek-R1-Distill-Llama-70B",
-  "Meta-Llama-3.1-405B-Instruct",
-  "Qwen2.5-72B-Instruct",
-]
-// Selecting the model here for all the functions
-const selectedModel = modelSelect[2]
-
-// Getting the user input
