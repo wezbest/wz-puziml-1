@@ -1,0 +1,21 @@
+{
+  "name": "o1",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "^1.2.2",
+    "@types/progress": "^2.0.7"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "boxen": "^8.0.1",
+    "chalk": "^5.4.1",
+    "cli": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "ora": "^8.2.0",
+    "progress": "^2.0.3"
+  }
+}
