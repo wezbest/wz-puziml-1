@@ -34,7 +34,7 @@ bun_start() {
 
     # Commands and variables
     CO1="mkdir -v $name_of_project && cd $name_of_project && bun init -y"
-    CO2="bun add chalk axios dotenv ora cli boxen progress openai prompt-sync-plus"
+    CO2="bun add chalk axios dotenv ora cli boxen progress openai inquirer"
     CO3="bun add @types/bun @types/progress -D"
     CO4="bun pm ls"
 

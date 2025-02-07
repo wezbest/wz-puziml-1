@@ -1,20 +1,17 @@
 // Main enry point
-import { la1 } from "./src/ut1"
+import { la1, la2 } from "./src/ut1"
 import {
   comSamb1,
   comSamb2writeToResults,
   comSamb2writeToResultsStreaming,
   comSamb3,
 } from "./src/fu1"
-import { geInput } from "./src/or1"
+import { printInput } from "./src/or1"
+import { printBanner } from "./src/ban"
 
 async function main() {
-  gettingInput()
-}
-
-function gettingInput() {
-  la1("Get input from user")
-  geInput()
+  printBanner()
+  printInput()
 }
 
 // Execute Function

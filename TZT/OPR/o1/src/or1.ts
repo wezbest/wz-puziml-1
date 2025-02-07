@@ -8,7 +8,7 @@ import * as dotenv from "dotenv"
 import * as fs from "fs"
 import * as path from "path"
 import ProgressBar from "progress"
-import psp from "prompt-sync-plus"
+import inquirer from "inquirer"
 import { la2 } from "./ut1"
 
 dotenv.config()
@@ -26,6 +26,28 @@ const modelSelect = [
 const selectedModel = modelSelect[2]
 
 // Getting the user input
-const askPrompt = psp({ sigint: true })
-const name = prompt("Enter your name: ")
-console.log(`Hello, ${name}!`)
+export async function getUserInput() {
+  const answers = await inquirer.prompt([
+    {
+      type: "input",
+      name: "Query",
+      message: "Enter Your Query:",
+    },
+    {
+      type: "input",
+      name: "Model",
+      message: "Which Model You want?",
+    },
+  ])
+
+  return answers
+}
+
+// Printing it out the top
+export async function printInput() {
+  const answers = await getUserInput()
+  la2(`
+answers.Query: ${answers.Query}
+answers.Model: ${answers.Model}
+    `)
+}

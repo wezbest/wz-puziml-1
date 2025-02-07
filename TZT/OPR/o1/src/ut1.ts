@@ -17,7 +17,7 @@ export function la1(text: string) {
 }
 
 export function la2(text: string) {
-  console.clear()
+  // console.clear()
 
   const boxText1 = chalk.magentaBright(text)
 
