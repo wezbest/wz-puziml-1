@@ -40,13 +40,3 @@ export async function printInput() {
     console.error("An error occurred:", error)
   }
 }
-
-// Gettin the user input only
-export async function getUserInputOnly() {
-  try {
-    const resolvedUserInput = await getUserInput()
-    return resolvedUserInput
-  } catch (error) {
-    console.error("An error occurred:", error)
-  }
-}
