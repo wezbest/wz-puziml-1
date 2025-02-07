@@ -72,15 +72,33 @@ export async function fetchChatCompletion(model: string, query: string) {
 
 export async function printOutput() {
   try {
-    const resolvedUserInput = await getUserInput() // Wait for the Promise to resolve
+    const resolvedUserInput = await getUserInput()
     console.log(resolvedUserInput)
 
-    // Call the fetchChatCompletion function
     const response = await fetchChatCompletion(
-      resolvedUserInput.Model.toString(),
+      resolvedUserInput.Model,
       resolvedUserInput.Query
     )
-    console.log("Chat Completion Response:", response)
+
+    // Extract the content
+    const content = response.choices[0].message.content
+
+    // Create results directory if it doesn't exist
+    const resultsDir = path.join(process.cwd(), "results")
+    if (!fs.existsSync(resultsDir)) {
+      fs.mkdirSync(resultsDir, { recursive: true })
+    }
+
+    // Create filename with timestamp
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-")
+    const filename = `results_${timestamp}.txt`
+    const filePath = path.join(resultsDir, filename)
+
+    // Write to file and console
+    fs.writeFileSync(filePath, content)
+    console.log("\nGenerated Content:")
+    console.log(content)
+    console.log(`\nContent saved to: ${filePath}`)
   } catch (error) {
     console.error("An error occurred:", error)
   }
