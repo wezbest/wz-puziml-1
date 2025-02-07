@@ -16,45 +16,51 @@ const apiKeyz = process.env.OPR1
 const apiUrl = "https://openrouter.ai/api/v1/chat/completions"
 
 export async function fetchChatCompletion(model: string, query: string) {
-  const apiKey = apiKeyz // Replace with your OpenRouter API key
-  const siteUrl = "<YOUR_SITE_URL>" // Optional: Replace with your site URL
-  const siteName = "<YOUR_SITE_NAME>" // Optional: Replace with your site name
+  const apiKey = process.env.OPR1
+  if (!apiKey) {
+    throw new Error("OpenRouter API key not found in environment variables")
+  }
 
-  const spinner = ora("Fetching chat completion...").start() // Start the spinner
+  const spinner = ora("Fetching chat completion...").start()
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${apiKeyz}`,
-        "HTTP-Referer": siteUrl, // Optional
-        "X-Title": siteName, // Optional
+        Authorization: `Bearer ${apiKey}`,
+        "HTTP-Referer": "http://localhost:3000", // Update this
+        "X-Title": "My AI App", // Update this
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: model, // Use the model parameter
-        messages: [
-          {
-            role: "user",
-            content: query, // Use the query parameter
-          },
-        ],
+        model: model,
+        messages: [{
+          role: "user",
+          content: query,
+        }],
       }),
     })
 
+    const responseText = await response.text()
+    
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`)
+      throw new Error(`HTTP error! Status: ${response.status}\nResponse: ${responseText}`)
     }
 
-    const data = await response.json()
-    spinner.succeed("Chat completion fetched successfully!") // Stop the spinner with success
-    return data // Return the response data
+    try {
+      const data = JSON.parse(responseText)
+      spinner.succeed("Chat completion fetched successfully!")
+      return data
+    } catch (parseError) {
+      throw new Error(`JSON parse error: ${parseError}\nResponse: ${responseText}`)
+    }
   } catch (error) {
-    spinner.fail("Failed to fetch chat completion.") // Stop the spinner with failure
-    console.error("Error fetching chat completion:", error)
-    throw error // Re-throw the error for handling elsewhere
+    spinner.fail("Failed to fetch chat completion.")
+    console.error("Error details:", error)
+    throw error
   }
 }
+Key changes made:
 
 export async function printOutput() {
   try {
