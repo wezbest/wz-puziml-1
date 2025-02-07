@@ -97,9 +97,14 @@ export async function printOutput() {
 
     // Write to file and console
     fs.writeFileSync(filePath, content)
-    console.log(chalk.green("Raw Repsponse"))
+
+    // Printing Response to consonle
+    console.log(chalk.yellow("Raw Repsponse"))
+    console.log(response)
     console.log(chalk.green("Generated Content:"))
     console.log(content)
+
+    // Printing the actual path of the file
     console.log(`\nContent saved to: ${filePath}`)
   } catch (error) {
     console.error("An error occurred:", error)
