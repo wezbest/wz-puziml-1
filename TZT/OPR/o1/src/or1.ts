@@ -24,27 +24,34 @@ export async function fetchChatCompletion(model: string, query: string) {
   const spinner = ora("Fetching chat completion...").start()
 
   try {
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "HTTP-Referer": "http://localhost:3000", // Update this
-        "X-Title": "My AI App", // Update this
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: model,
-        messages: [{
-          role: "user",
-          content: query,
-        }],
-      }),
-    })
+    const response = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "HTTP-Referer": "http://localhost:3000", // Update this
+          "X-Title": "My AI App", // Update this
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: model,
+          messages: [
+            {
+              role: "user",
+              content: query,
+            },
+          ],
+        }),
+      }
+    )
 
     const responseText = await response.text()
-    
+
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}\nResponse: ${responseText}`)
+      throw new Error(
+        `HTTP error! Status: ${response.status}\nResponse: ${responseText}`
+      )
     }
 
     try {
@@ -52,7 +59,9 @@ export async function fetchChatCompletion(model: string, query: string) {
       spinner.succeed("Chat completion fetched successfully!")
       return data
     } catch (parseError) {
-      throw new Error(`JSON parse error: ${parseError}\nResponse: ${responseText}`)
+      throw new Error(
+        `JSON parse error: ${parseError}\nResponse: ${responseText}`
+      )
     }
   } catch (error) {
     spinner.fail("Failed to fetch chat completion.")
@@ -60,7 +69,6 @@ export async function fetchChatCompletion(model: string, query: string) {
     throw error
   }
 }
-Key changes made:
 
 export async function printOutput() {
   try {
