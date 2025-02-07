@@ -14,36 +14,33 @@ import { getUserInput } from "./inp"
 
 dotenv.config()
 
-const apiKey = process.env.OPR1
+const apiKeyz = process.env.OPR1
 const apiUrl = "https://openrouter.ai/api/v1/chat/completions"
 
 async function fetchChatCompletion(model: string, query: string) {
-  const apiKey = "<OPENROUTER_API_KEY>" // Replace with your OpenRouter API key
+  const apiKey = apiKeyz // Replace with your OpenRouter API key
   const siteUrl = "<YOUR_SITE_URL>" // Optional: Replace with your site URL
   const siteName = "<YOUR_SITE_NAME>" // Optional: Replace with your site name
 
   try {
-    const response = await fetch(
-      "https://openrouter.ai/api/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "HTTP-Referer": siteUrl, // Optional
-          "X-Title": siteName, // Optional
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: model, // Use the model parameter
-          messages: [
-            {
-              role: "user",
-              content: query, // Use the query parameter
-            },
-          ],
-        }),
-      }
-    )
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKeyz}`,
+        "HTTP-Referer": siteUrl, // Optional
+        "X-Title": siteName, // Optional
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: model, // Use the model parameter
+        messages: [
+          {
+            role: "user",
+            content: query, // Use the query parameter
+          },
+        ],
+      }),
+    })
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`)
