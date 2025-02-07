@@ -63,7 +63,7 @@ export async function printOutput() {
 
     // Call the fetchChatCompletion function
     const response = await fetchChatCompletion(
-      resolvedUserInput.Model.toString(),
+      resolvedUserInput.Model,
       resolvedUserInput.Query
     )
     console.log("Chat Completion Response:", response)
