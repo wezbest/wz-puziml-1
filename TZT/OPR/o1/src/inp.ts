@@ -33,7 +33,7 @@ export async function getUserInput(): Promise<UserInput> {
 }
 
 // Printing the user input
-export async function printInput() {
+export async function examplePrintInput() {
   try {
     const resolvedUserInput = await getUserInput() // Wait for the Promise to resolve
     console.log(resolvedUserInput)

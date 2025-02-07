@@ -7,12 +7,10 @@ import {
   comSamb3,
 } from "./src/fu1"
 import { printBanner } from "./src/ban"
-import { printInput } from "./src/inp"
 
 async function main() {
   console.clear()
   printBanner()
-  await printInput()
 }
 
 // Execute Function
