@@ -6,10 +6,15 @@ import {
   comSamb2writeToResultsStreaming,
   comSamb3,
 } from "./src/fu1"
+import { geInput } from "./src/or1"
 
 async function main() {
-  la1("Call API and write to file")
-  await comSamb2writeToResultsStreaming()
+  gettingInput()
+}
+
+function gettingInput() {
+  la1("Get input from user")
+  geInput()
 }
 
 // Execute Function
