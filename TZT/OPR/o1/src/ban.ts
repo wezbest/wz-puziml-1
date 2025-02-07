@@ -8,10 +8,11 @@ const ban1 = `
 ║ ║ ╠═╝ ║╣  ║║║ ── ╠╦╝ ║ ║ ║ ║  ║  ║╣  ╠╦╝
 ╚═╝ ╩   ╚═╝ ╝╚╝    ╩╚═ ╚═╝ ╚═╝  ╩  ╚═╝ ╩╚═
 `
+const colorBan1 = chalk.magentaBright(ban1)
 
 export function printBanner() {
   console.log(
-    boxen(ban1, {
+    boxen(colorBan1, {
       padding: 0.5,
       borderColor: "green",
       borderStyle: "round",
