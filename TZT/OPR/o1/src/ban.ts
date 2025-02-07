@@ -3,6 +3,16 @@
 import chalk from "chalk"
 import boxen from "boxen"
 
+const banBig = `
+╔═╗ ╔═╗ ╔═╗ ╔╗╔    ╦═╗ ╔═╗ ╦ ╦ ╔╦╗ ╔═╗ ╦═╗
+║ ║ ╠═╝ ║╣  ║║║ ── ╠╦╝ ║ ║ ║ ║  ║  ║╣  ╠╦╝
+╚═╝ ╩   ╚═╝ ╝╚╝    ╩╚═ ╚═╝ ╚═╝  ╩  ╚═╝ ╩╚═
+`
+const smallText = `
+Avaialble Models:
+
+`
+
 const ban1 = `
 ╔═╗ ╔═╗ ╔═╗ ╔╗╔    ╦═╗ ╔═╗ ╦ ╦ ╔╦╗ ╔═╗ ╦═╗
 ║ ║ ╠═╝ ║╣  ║║║ ── ╠╦╝ ║ ║ ║ ║  ║  ║╣  ╠╦╝
