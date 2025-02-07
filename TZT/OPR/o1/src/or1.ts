@@ -9,6 +9,7 @@ import * as fs from "fs"
 import * as path from "path"
 import { la2 } from "./ut1"
 import { getUserInput } from "./inp"
+import chalk from "chalk"
 
 dotenv.config()
 
@@ -96,7 +97,8 @@ export async function printOutput() {
 
     // Write to file and console
     fs.writeFileSync(filePath, content)
-    console.log("\nGenerated Content:")
+    console.log(chalk.green("Raw Repsponse"))
+    console.log(chalk.green("Generated Content:"))
     console.log(content)
     console.log(`\nContent saved to: ${filePath}`)
   } catch (error) {

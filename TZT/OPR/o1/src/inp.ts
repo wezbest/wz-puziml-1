@@ -28,6 +28,7 @@ export async function getUserInput(): Promise<UserInput> {
       name: "Model",
       message: "Which Model do you want?",
       choices: modelOptions,
+      default: modelOptions[0],
     },
   ])
 
