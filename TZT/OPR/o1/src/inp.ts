@@ -15,6 +15,7 @@ const modelOptions = [
   "deepseek/deepseek-r1-distill-llama-70b:free",
   "deepseek/deepseek-r1:free",
   "sophosympatheia/rogue-rose-103b-v0.2:free",
+  "mistralai/mistral-7b-instruct:free",
 ]
 
 export async function getUserInput(): Promise<UserInput> {

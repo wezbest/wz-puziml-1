@@ -15,6 +15,7 @@ Avaialble Models:
 4 - "deepseek/deepseek-r1-distill-llama-70b:free" - Good for Coding . Research
 5 - "deepseek/deepseek-r1:free" - Best Overall but slow,
 6 - "sophosympatheia/rogue-rose-103b-v0.2:free" - Roleplay Stories,
+7 - "mistralai/mistral-7b-instruct:free" - Mistral Small Model
 `
 
 const colorCombinedBanner = chalk.magentaBright(combinedBanner)
