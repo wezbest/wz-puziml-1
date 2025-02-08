@@ -35,17 +35,33 @@ serve({
       console.log("Title:", title)
 
       if (image) {
-        const file = s3.file(image.name)
+        const file = s3.file((image as File).name)
         await file.write(image)
 
         const newImage =
-          await postgres`insert into images (title, path) values (${title}, ${image.name}) returning *`
-        return new Response(JSON.stringify(newImage))
+          await postgres`insert into images (title, path) values (${title}, ${
+            (image as File).name
+          }) returning *`
+        return new Response(JSON.stringify(newImage), {
+          headers: {
+            "content-type": "application/json",
+          },
+        })
       }
 
-      return new Response("No image provided smelling panty")
+      return new Response("No image provided", {
+        status: 400,
+        headers: {
+          "content-type": "text/plain",
+        },
+      })
     }
 
-    return new Response("Lick Pusy")
+    return new Response("Not Found", {
+      status: 404,
+      headers: {
+        "content-type": "text/plain",
+      },
+    })
   },
 })
