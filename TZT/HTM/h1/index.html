@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Ethereum Gas Prices</title>
     <link
       rel="stylesheet"
       href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
@@ -16,14 +16,109 @@
         align-items: center;
         height: 100vh;
         margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+      }
+      .column {
+        text-align: center;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        width: 150px;
+      }
+      .gauge {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 1rem auto;
+        border-radius: 50%;
+        background: conic-gradient(#4caf50 0%, #ff9800 50%, #f44336 100%);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .gauge::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 80%;
+        background: white;
+        border-radius: 50%;
+      }
+      .gauge-value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+      }
+      h1 {
+        margin-bottom: 2rem;
       }
     </style>
   </head>
   <body>
-    <h1>Smell</h1>
-    <form>
-      <input type="text" placeholder="Enter text" required />
-      <button type="submit">Submit</button>
-    </form>
+    <h1>Ethereum Gas Prices</h1>
+    <div class="container">
+      <!-- Low Gas -->
+      <div class="column">
+        <h2>Low</h2>
+        <div class="gauge">
+          <div class="gauge-value" id="low-gas">--</div>
+        </div>
+      </div>
+
+      <!-- Medium Gas -->
+      <div class="column">
+        <h2>Medium</h2>
+        <div class="gauge">
+          <div class="gauge-value" id="medium-gas">--</div>
+        </div>
+      </div>
+
+      <!-- High Gas -->
+      <div class="column">
+        <h2>High</h2>
+        <div class="gauge">
+          <div class="gauge-value" id="high-gas">--</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Function to fetch Ethereum gas prices
+      async function fetchGasPrices() {
+        try {
+          // Fetch data from Etherchain API
+          const response = await fetch("https://api.etherchain.org/gasnow")
+          const data = await response.json()
+
+          // Extract gas prices
+          const low = Math.round(data.data.low / 1e9) // Convert from wei to gwei
+          const medium = Math.round(data.data.standard / 1e9)
+          const high = Math.round(data.data.fast / 1e9)
+
+          // Update the DOM with gas prices
+          document.getElementById("low-gas").textContent = `${low} Gwei`
+          document.getElementById("medium-gas").textContent = `${medium} Gwei`
+          document.getElementById("high-gas").textContent = `${high} Gwei`
+        } catch (error) {
+          console.error("Error fetching gas prices:", error)
+          alert("Failed to fetch gas prices. Please try again later.")
+        }
+      }
+
+      // Fetch gas prices on page load
+      fetchGasPrices()
+    </script>
   </body>
 </html>
