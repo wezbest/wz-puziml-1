@@ -27,8 +27,12 @@ serve({
 
     if (pathname === "/api/upload") {
       const formData = await request.formData()
-      const image = (await formData.get("image")) as File
-      const title = (await formData.get("title")) as string
+      const image = formData.get("file") // Use 'file' to match the name attribute in the HTML form
+      const title = formData.get("title")
+
+      console.log("Form Data:", formData)
+      console.log("Image:", image)
+      console.log("Title:", title)
 
       if (image) {
         const file = s3.file(image.name)
