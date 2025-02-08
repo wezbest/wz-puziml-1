@@ -24,6 +24,13 @@ serve({
         }
       )
     }
+
+    if(pathname === "/api/upload") {
+      const formData = await request.formData()
+      const image = (await formData.get("image")) as File
+
+    }
+
     return new Response("Lick Pusy")
   },
 })
