@@ -28,6 +28,9 @@ serve({
     if(pathname === "/api/upload") {
       const formData = await request.formData()
       const image = (await formData.get("image")) as File
+      const title = (await formData.get("title")) as string
+
+      
 
     }
 
