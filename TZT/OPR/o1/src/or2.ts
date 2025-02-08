@@ -122,7 +122,7 @@ export async function oprModelQueryFile() {
     }
 
     // --- SECTION 3: Get Model from User Input ---
-    const model = await getUserInput("Enter the model: ")
+    const model = (await getUserInput()).Model
     console.log(chalk.blue(`Using model: ${model}`))
 
     // --- SECTION 4: Start Spinner for Loading Indicator ---

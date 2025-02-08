@@ -2,12 +2,12 @@
 
 import { printBanner } from "./src/ban"
 import { printOutput } from "./src/or1"
-import { oprModelChat } from "./src/or2"
+import { oprModelChat, oprModelQueryFile } from "./src/or2"
 
 async function main() {
   console.clear()
   printBanner()
-  oprModelChat()
+  oprModelQueryFile()
 }
 
 // Execute Function
