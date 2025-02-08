@@ -46,5 +46,31 @@ bun_start() {
     echo -e "${GREEN}***** Installation Completed *****${NC}"
 }
 
+bun_basic() {
+    # Bun init start 
+    hea1 "Bun Basic Install"
+
+    # Get Name of project
+    echo -e "Enter the name of the project: "
+    read name_of_project
+    if [ -z "$name_of_project" ]; then
+        echo -e "${RED}BASTARD ! Project name cannot be empty${NC}"
+        exit 1
+    fi
+
+    # Commands and variables
+    CO1="mkdir -v $name_of_project && cd $name_of_project && bun init -y"
+    CO2="bun pm ls"
+
+    # RUN Above Commands
+    echo -e "--- Initiate ${CO1} ---"
+    eval "$CO1"
+    echo -e "--- Init Bun Basic ---"
+    eval "$CO2" 
+    echo -e "${GREEN}***** Installation Completed *****${NC}"
+}
+
+
+
 # Execute Command 
 bun_start
