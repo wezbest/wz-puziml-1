@@ -12,7 +12,7 @@ dotenv.config()
 const apiKeyz = process.env.OPR1
 const apiUrl = "https://openrouter.ai/api/v1/chat/completions"
 
-export async function fetchAndPrintChatCompletion() {
+export async function oprModelChat() {
   // --- SECTION 1: Validate API Key ---
   const apiKey = process.env.OPR1
   if (!apiKey) {
