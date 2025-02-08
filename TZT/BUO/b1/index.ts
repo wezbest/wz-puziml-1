@@ -12,7 +12,7 @@ serve({
     const { pathname } = new URL(url)
 
     if (pathname === "/api/posts") {
-      const posts = postgres`select * from posts`
+      const posts = await postgres`select * from posts`
       return new Response(JSON.stringify(posts), {
         headers: {
           "content-type": "application/json",
