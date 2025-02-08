@@ -1,1 +1,73 @@
-<h1>Lick Pussy</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text to Hex Converter</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+      }
+      #hexOutput {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.5em;
+        margin-top: 20px;
+        transition: all 0.5s ease-in-out;
+        color: #32cd32; /* Greenish bright font color */
+      }
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      .card {
+        padding: 1em;
+        border-radius: 0.5em;
+        box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.1);
+        background-color: #f0f0f0;
+        margin-top: 20px;
+        width: 80%;
+        max-width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Text to Hex Converter</h1>
+    <form id="textForm">
+      <input type="text" id="textInput" placeholder="Enter text here" />
+      <button type="submit">Convert</button>
+    </form>
+    <div class="card">
+      <div id="hexOutput"></div>
+    </div>
+    <script>
+      document
+        .getElementById("textInput")
+        .addEventListener("input", function () {
+          const text = document.getElementById("textInput").value
+          const hex = text
+            .split("")
+            .map((char) => char.charCodeAt(0).toString(16))
+            .join(" ")
+          const hexOutput = document.getElementById("hexOutput")
+          hexOutput.textContent = hex
+          hexOutput.classList.remove("fade-in")
+          void hexOutput.offsetWidth // trigger reflow
+          hexOutput.classList.add("fade-in")
+        })
+    </script>
+  </body>
+</html>
