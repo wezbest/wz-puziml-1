@@ -53,13 +53,9 @@
       <div id="hexOutput"></div>
     </div>
     <script>
-      function getRandomDarkColor() {
-        const letters = "0123456789ABCDEF"
-        let color = "#"
-        for (let i = 0; i < 6; i++) {
-          color += letters[Math.floor(Math.random() * 16)]
-        }
-        return color
+      function getRandomDarkGreyColor() {
+        const value = Math.floor(Math.random() * 100) // Dark grey shades
+        return `rgb(${value}, ${value}, ${value})`
       }
 
       document
@@ -76,7 +72,7 @@
           void hexOutput.offsetWidth // trigger reflow
           hexOutput.classList.add("fade-in")
 
-          document.body.style.backgroundColor = getRandomDarkColor()
+          document.body.style.backgroundColor = getRandomDarkGreyColor()
         })
     </script>
   </body>
