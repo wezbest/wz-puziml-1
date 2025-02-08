@@ -1,6 +1,6 @@
 // Follow tutoza
 
-import { serve, postgres } from "bun"
+import { serve, postgres, s3 } from "bun"
 import bun from "./bun.html"
 
 serve({
