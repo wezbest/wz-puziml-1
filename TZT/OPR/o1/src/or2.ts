@@ -1,5 +1,3 @@
-// This is version 2 of or1.ts , for testing other functions
-
 import axios from "axios"
 import ora from "ora"
 import * as dotenv from "dotenv"
@@ -15,17 +13,21 @@ const apiKeyz = process.env.OPR1
 const apiUrl = "https://openrouter.ai/api/v1/chat/completions"
 
 export async function fetchAndPrintChatCompletion() {
+  // --- SECTION 1: Validate API Key ---
   const apiKey = process.env.OPR1
   if (!apiKey) {
     throw new Error("OpenRouter API key not found in environment variables")
   }
 
   try {
+    // --- SECTION 2: Get User Input ---
     const resolvedUserInput = await getUserInput()
     console.log(resolvedUserInput)
 
+    // --- SECTION 3: Start Spinner for Loading Indicator ---
     const spinner = ora("Fetching chat completion...").start()
 
+    // --- SECTION 4: Make API Request to OpenRouter ---
     const response = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
       {
@@ -48,8 +50,10 @@ export async function fetchAndPrintChatCompletion() {
       }
     )
 
+    // --- SECTION 5: Handle API Response ---
     const responseText = await response.text()
 
+    // Check if the response is not OK (e.g., HTTP error)
     if (!response.ok) {
       throw new Error(
         `HTTP error! Status: ${response.status}\nResponse: ${responseText}`
@@ -57,40 +61,46 @@ export async function fetchAndPrintChatCompletion() {
     }
 
     try {
+      // --- SECTION 6: Parse JSON Response ---
       const data = JSON.parse(responseText)
       spinner.succeed("Chat completion fetched successfully!")
 
-      // Extract the content
+      // --- SECTION 7: Extract Generated Content ---
       const content = data.choices[0].message.content
 
-      // Create results directory if it doesn't exist
+      // --- SECTION 8: Create Results Directory ---
       const resultsDir = path.join(process.cwd(), "results")
       if (!fs.existsSync(resultsDir)) {
         fs.mkdirSync(resultsDir, { recursive: true })
       }
 
-      // Create filename with timestamp
+      // --- SECTION 9: Generate Filename with Timestamp ---
       const timestamp = new Date().toISOString().replace(/[:.]/g, "-")
       const filename = `results_${timestamp}.txt`
       const filePath = path.join(resultsDir, filename)
 
-      // Write to file and console
+      // --- SECTION 10: Save Content to File ---
       fs.writeFileSync(filePath, content)
 
-      // Printing Response to console
+      // --- SECTION 11: Print Raw Response and Generated Content ---
       console.log(chalk.yellow("Raw Response"))
       console.log(data)
       console.log(chalk.green("Generated Content:"))
       console.log(content)
 
-      // Printing the actual path of the file
+      // --- SECTION 12: Print File Path ---
       console.log(`\nContent saved to: ${filePath}`)
     } catch (parseError) {
+      // --- SECTION 13: Handle JSON Parsing Errors ---
       throw new Error(
         `JSON parse error: ${parseError}\nResponse: ${responseText}`
       )
     }
   } catch (error) {
+    // --- SECTION 14: Handle General Errors ---
     console.error("An error occurred:", error)
   }
 }
+
+// Usage
+// fetchAndPrintChatCompletion();
