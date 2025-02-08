@@ -111,5 +111,5 @@ export async function printOutput() {
   }
 }
 
-// Fnction for streaming reponse
+// Function for streaming response
 export async function fetchChatCompletionStream(model: string, query: string) {}
