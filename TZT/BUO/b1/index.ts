@@ -2,6 +2,7 @@
 
 import { serve, postgres, s3 } from "bun"
 import bun from "./bun.html"
+import upload from "./upload.html"
 
 serve({
   static: {

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload Form</title>
+    <style>
+      :root {
+        --bg-color: #333333;
+        --text-color: #ffffff;
+        --input-bg: #555555;
+        --input-border: #777777;
+        --button-bg: #45a049;
+        --button-text: #ffffff;
+      }
+
+      .light-mode {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --input-bg: #f0f0f0;
+        --input-border: #cccccc;
+        --button-bg: #4caf50;
+        --button-text: #ffffff;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .upload-form {
+        background-color: var(--bg-color);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      input[type="text"],
+      input[type="file"] {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid var(--input-border);
+        border-radius: 4px;
+        background-color: var(--input-bg);
+        color: var(--text-color);
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: var(--button-bg);
+        color: var(--button-text);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      input[type="submit"]:hover {
+        background-color: var(--button-bg);
+        opacity: 0.9;
+      }
+
+      .theme-toggle {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      .theme-toggle label {
+        margin-left: 0.5rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="upload-form">
+      <h1>File Upload</h1>
+      <form action="/api/upload" method="post" enctype="multipart/form-data">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required />
+
+        <label for="file">Choose a file:</label>
+        <input type="file" id="file" name="file" required />
+
+        <input type="submit" value="Upload" />
+      </form>
+
+      <div class="theme-toggle">
+        <input type="checkbox" id="themeToggle" />
+        <label for="themeToggle">Light Mode</label>
+      </div>
+    </div>
+
+    <script>
+      const themeToggle = document.getElementById("themeToggle")
+      themeToggle.addEventListener("change", () => {
+        document.body.classList.toggle("light-mode")
+        themeToggle.nextElementSibling.textContent =
+          document.body.classList.contains("light-mode")
+            ? "Dark Mode"
+            : "Light Mode"
+      })
+    </script>
+  </body>
+</html>
