@@ -22,9 +22,10 @@ hea1() {
 
 bu_ru() {
     hea1 "bun: Serving Fetch Request"
-    CO1="bun run index.ts"
+    CO1="bun i"
+    CO2="bun run index.ts"
     echo -e "${GREEN}--- Running ${CO1} ---"
-    eval "$CO1"
+    eval "$CO1" && eval "$CO2"
 }
 
 # Execute the function
