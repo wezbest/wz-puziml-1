@@ -28,27 +28,24 @@ export async function oprModelChat() {
     const spinner = ora("Fetching chat completion...").start()
 
     // --- SECTION 4: Make API Request to OpenRouter ---
-    const response = await fetch(
-      "https://openrouter.ai/api/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "HTTP-Referer": "http://localhost:3000", // Update this
-          "X-Title": "My AI App", // Update this
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: resolvedUserInput.Model,
-          messages: [
-            {
-              role: "user",
-              content: resolvedUserInput.Query,
-            },
-          ],
-        }),
-      }
-    )
+    const response = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "HTTP-Referer": "http://localhost:3000", // Update this
+        "X-Title": "My AI App", // Update this
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: resolvedUserInput.Model,
+        messages: [
+          {
+            role: "user",
+            content: resolvedUserInput.Query,
+          },
+        ],
+      }),
+    })
 
     // --- SECTION 5: Handle API Response ---
     const responseText = await response.text()
