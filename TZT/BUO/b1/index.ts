@@ -6,6 +6,7 @@ import bun from "./bun.html"
 serve({
   static: {
     "/bun": bun,
+    "/uploads": upload,
   },
   async fetch(request) {
     const { url } = request
