@@ -20,9 +20,9 @@ hea1() {
     echo -e "${CYAN}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~${NC}"
 }
 
-bun_start() {
+bun_pussy() {
     # Bun init start 
-    hea1 "Buni: Starting the installation and install"
+    hea1 "Buni: Sexy ass and pussy"
 
     # Get Name of project
     echo -e "Enter the name of the project: "
@@ -47,7 +47,7 @@ bun_start() {
 }
 
 bun_basic() {
-    # Bun init start 
+    # Bare bones install 
     hea1 "Bun Basic Install"
 
     # Get Name of project
@@ -70,7 +70,30 @@ bun_basic() {
     echo -e "${GREEN}***** Installation Completed *****${NC}"
 }
 
+# Menu Function 
+menu_choice() {
+    clear
+    hea1 "Installation Menu"
+    echo -e "${YELLOW}Choose an option:${NC}"
+    echo -e "${GREEN}1) Bun with sexy ass and pussy${NC}"
+    echo -e "${GREEN}2) Bun Basic${NC}"
+    echo -e "${RED}3) AssFucking ${NC}"
+    echo -ne "${CYAN}Enter your choice: ${NC}"
+    read choice
 
+    case $choice in
+    1) bun_pussy ;;
+    2) bun_basic ;;
+    3)
+        echo -e "${RED}Raped !...${NC}"
+        exit 0
+        ;;
+    *)
+        echo -e "${RED}Batard ! Invalid choice, exiting.${NC}"
+        exit 1
+        ;;
+    esac
+}
 
-# Execute Command 
-bun_start
+# Execution
+menu_choice
