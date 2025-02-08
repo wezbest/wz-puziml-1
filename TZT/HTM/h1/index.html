@@ -9,6 +9,7 @@
       href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
     />
     <style>
+      /* General Styles */
       body {
         display: flex;
         flex-direction: column;
@@ -17,41 +18,55 @@
         height: 100vh;
         margin: 0;
         font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
+        background-color: #1a1a1a; /* Dark background */
+        color: white; /* Light text */
       }
+
       h1 {
         margin-bottom: 2rem;
+        color: white; /* Ensure title is visible */
       }
+
+      /* Wallet Container */
       .wallet-container {
         display: flex;
         gap: 2rem;
         justify-content: center;
         align-items: flex-start;
       }
+
+      /* Wallet Card */
       .wallet-card {
-        background: white;
+        background: #2a2a2a; /* Dark card background */
         padding: 1rem;
         border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         width: 250px;
         text-align: center;
         opacity: 0;
         transform: translateY(20px);
         transition: all 0.5s ease-in-out;
+        color: white; /* Light text for card content */
       }
+
       .wallet-card.show {
         opacity: 1;
         transform: translateY(0);
       }
+
       .wallet-card h2 {
         margin-bottom: 1rem;
         font-size: 1.2rem;
+        color: #4caf50; /* Highlight wallet title */
       }
+
       .wallet-card p {
         font-size: 0.9rem;
-        color: #555;
+        color: #cccccc; /* Light gray for details */
         word-wrap: break-word;
       }
+
+      /* Button Styling */
       button {
         margin-top: 2rem;
         padding: 0.75rem 1.5rem;
@@ -63,16 +78,9 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
       }
+
       button:hover {
         background-color: #45a049;
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
       }
     </style>
   </head>
@@ -84,8 +92,8 @@
 
     <!-- Include Web3.js and ethereumjs-wallet -->
     <script src="https://cdn.jsdelivr.net/npm/web3@1.7.5/dist/web3.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ethereumjs-wallet@0.6.0/dist/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bip39@3.0.4/dist/bip39.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethereumjs-wallet@0.6.0/dist/index.min.js"></script>
 
     <script>
       // Function to generate wallets
