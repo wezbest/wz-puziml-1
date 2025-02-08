@@ -96,50 +96,66 @@
     <script src="https://cdn.jsdelivr.net/npm/ethereumjs-wallet@0.6.0/dist/index.min.js"></script>
 
     <script>
-      // Function to generate wallets
-      function generateWallets() {
-        const walletContainer = document.getElementById("wallet-container")
-        walletContainer.innerHTML = "" // Clear previous wallets
+      // Check if libraries are loaded
+      try {
+        if (typeof bip39 === "undefined") {
+          throw new Error(
+            "bip39 library failed to load. Please check your internet connection or try again later."
+          )
+        } else if (typeof ethereumjsWallet === "undefined") {
+          throw new Error(
+            "ethereumjs-wallet library failed to load. Please check your internet connection or try again later."
+          )
+        } else {
+          // Function to generate wallets
+          function generateWallets() {
+            const walletContainer = document.getElementById("wallet-container")
+            walletContainer.innerHTML = "" // Clear previous wallets
 
-        // Generate 3 wallets
-        for (let i = 1; i <= 3; i++) {
-          // Generate a mnemonic
-          const mnemonic = bip39.generateMnemonic()
+            // Generate 3 wallets
+            for (let i = 1; i <= 3; i++) {
+              // Generate a mnemonic
+              const mnemonic = bip39.generateMnemonic()
 
-          // Create a wallet from the mnemonic
-          const seed = bip39.mnemonicToSeedSync(mnemonic)
-          const hdWallet = ethereumjsWallet.hdkey.fromMasterSeed(seed)
-          const wallet = hdWallet.derivePath("m/44'/60'/0'/0/0").getWallet()
+              // Create a wallet from the mnemonic
+              const seed = bip39.mnemonicToSeedSync(mnemonic)
+              const hdWallet = ethereumjsWallet.hdkey.fromMasterSeed(seed)
+              const wallet = hdWallet.derivePath("m/44'/60'/0'/0/0").getWallet()
 
-          // Extract private key and address
-          const privateKey = wallet.getPrivateKeyString()
-          const address = wallet.getAddressString()
+              // Extract private key and address
+              const privateKey = wallet.getPrivateKeyString()
+              const address = wallet.getAddressString()
 
-          // Create a wallet card
-          const walletCard = document.createElement("div")
-          walletCard.classList.add("wallet-card")
+              // Create a wallet card
+              const walletCard = document.createElement("div")
+              walletCard.classList.add("wallet-card")
 
-          walletCard.innerHTML = `
-          <h2>Wallet ${i}</h2>
-          <p><strong>Address:</strong> ${address}</p>
-          <p><strong>Private Key:</strong> ${privateKey}</p>
-          <p><strong>Mnemonic:</strong> ${mnemonic}</p>
-        `
+              walletCard.innerHTML = `
+                <h2>Wallet ${i}</h2>
+                <p><strong>Address:</strong> ${address}</p>
+                <p><strong>Private Key:</strong> ${privateKey}</p>
+                <p><strong>Mnemonic:</strong> ${mnemonic}</p>
+              `
 
-          // Append the wallet card to the container
-          walletContainer.appendChild(walletCard)
+              // Append the wallet card to the container
+              walletContainer.appendChild(walletCard)
 
-          // Add animation
-          setTimeout(() => {
-            walletCard.classList.add("show")
-          }, i * 300) // Staggered animation
+              // Add animation
+              setTimeout(() => {
+                walletCard.classList.add("show")
+              }, i * 300) // Staggered animation
+            }
+          }
+
+          // Attach event listener to the button
+          document
+            .getElementById("generate-btn")
+            .addEventListener("click", generateWallets)
         }
+      } catch (error) {
+        console.error("Error:", error.message)
+        alert(error.message)
       }
-
-      // Attach event listener to the button
-      document
-        .getElementById("generate-btn")
-        .addEventListener("click", generateWallets)
     </script>
   </body>
 </html>
