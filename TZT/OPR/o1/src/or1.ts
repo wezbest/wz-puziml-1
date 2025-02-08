@@ -110,3 +110,6 @@ export async function printOutput() {
     console.error("An error occurred:", error)
   }
 }
+
+// Fnction for streaming reponse
+export async function fetchChatCompletionStream(model: string, query: string) {}
