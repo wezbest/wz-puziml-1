@@ -13,11 +13,14 @@ serve({
 
     if (pathname === "/api/posts") {
       const posts = await postgres`select * from posts`
-      return new Response(JSON.stringify(posts), {
-        headers: {
-          "content-type": "application/json",
-        },
-      })
+      return new Response(
+        posts.map((post) => `<p>${post.title}</p>`).join(""),
+        {
+          headers: {
+            "content-type": "text/html",
+          },
+        }
+      )
     }
     return new Response("Lick Pusy")
   },
